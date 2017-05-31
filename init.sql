@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS 'geofences' (
 );
 
 INSERT INTO geofences (latitude, longitude, radius)
-  VALUES (-70, 42.00000, 300);
+  VALUES (-70, 42.00000, 0.30);
 
 INSERT INTO geofences (latitude, longitude, radius)
-  VALUES (-70, 42.00050, 50);
+  VALUES (-70, 42.00050, 0.05);

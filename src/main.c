@@ -11,7 +11,7 @@ typedef struct Results {
 sqlite3 *database;
 
 static int find_closest_geofence(double latitude, double longitude, Result *result) {
-  char *sql = "SELECT id, haversine(?, ?, latitude, longitude) - (radius / 1000.0) AS dist \
+  char *sql = "SELECT id, haversine(?, ?, latitude, longitude) - radius AS dist \
     FROM geofences ORDER BY dist ASC LIMIT 1;";
   sqlite3_stmt *statement;
 
