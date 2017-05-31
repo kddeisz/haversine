@@ -9,4 +9,4 @@ compile: init
 
 # Create the test.sqlite3 file
 init:
-	sqlite3 test.sqlite3 < test/seed.sql
+	sqlite3 test/test.sqlite3 < test/seed.sql

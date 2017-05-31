@@ -32,7 +32,7 @@ static int find_closest_geofence(double latitude, double longitude, Result *resu
 int main(int argc, char* argv[]) {
   int return_code;
 
-  if ((return_code = sqlite3_open("test.sqlite3", &database))) {
+  if ((return_code = sqlite3_open("test/test.sqlite3", &database))) {
     fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(database));
     exit(return_code);
   }
