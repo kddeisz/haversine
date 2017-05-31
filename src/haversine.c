@@ -16,11 +16,12 @@ double haversine(double lat1, double lon1, double lat2, double lon2) {
 }
 
 void haversine_sqlite(sqlite3_context *context, int argc, sqlite3_value *argv[]) {
-  double lat1 = sqlite3_value_double(argv[0]);
-  double lon1 = sqlite3_value_double(argv[1]);
-  double lat2 = sqlite3_value_double(argv[2]);
-  double lon2 = sqlite3_value_double(argv[3]);
-  sqlite3_result_double(context, haversine(lat1, lon1, lat2, lon2));
+  sqlite3_result_double(context, haversine(
+    sqlite3_value_double(argv[0]),
+    sqlite3_value_double(argv[1]),
+    sqlite3_value_double(argv[2]),
+    sqlite3_value_double(argv[3])
+  ));
 }
 
 int haversine_attach(sqlite3 *database) {
