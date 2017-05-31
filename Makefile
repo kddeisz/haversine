@@ -1,12 +1,8 @@
-# Run the haversine binary
-test: compile
-	test/haversine test.sqlite3
+run_test: test/haversine
+	test/haversine test/test.sqlite3
 
-# Compile the haversine binary
-compile: init
-	mkdir -p bin
+test/haversine: test/test.sqlite3
 	gcc -Wall -lsqlite3 test/main.c src/haversine.c -o test/haversine
 
-# Create the test.sqlite3 file
-init:
+test/test.sqlite3:
 	sqlite3 test/test.sqlite3 < test/seed.sql

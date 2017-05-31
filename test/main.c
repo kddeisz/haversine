@@ -3,6 +3,9 @@
 #include <sqlite3.h>
 #include "../src/haversine.h"
 
+#define CURRENT_LATITUDE -70
+#define CURRENT_LONGITUDE 42.01000
+
 typedef struct Results {
   int id;
   double distance;
@@ -32,7 +35,7 @@ static int find_closest_geofence(double latitude, double longitude, Result *resu
 int main(int argc, char* argv[]) {
   int return_code;
 
-  if ((return_code = sqlite3_open("test/test.sqlite3", &database))) {
+  if ((return_code = sqlite3_open(argv[1], &database))) {
     fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(database));
     exit(return_code);
   }
@@ -43,7 +46,7 @@ int main(int argc, char* argv[]) {
   }
 
   Result *result = malloc(sizeof(Result));
-  if ((return_code = find_closest_geofence(-70, 42.01000, result))) {
+  if ((return_code = find_closest_geofence(CURRENT_LATITUDE, CURRENT_LONGITUDE, result))) {
     fprintf(stderr, "Could not find closest geofence: %s\n", sqlite3_errmsg(database));
     free(result);
     exit(return_code);
@@ -51,6 +54,5 @@ int main(int argc, char* argv[]) {
 
   printf("Found nearest geofence: {id=%d distance=%f}\n", result->id, result->distance);
   free(result);
-
   sqlite3_close(database);
 }
