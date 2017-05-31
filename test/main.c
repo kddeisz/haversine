@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
-#include "haversine.h"
+#include "../src/haversine.h"
 
 typedef struct Results {
   int id;

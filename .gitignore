@@ -1,2 +1,2 @@
-bin
 test.sqlite3
+test/haversine
