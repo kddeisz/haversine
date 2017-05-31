@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
+#include <math.h>
 #include "../src/haversine.h"
 
 #define CURRENT_LATITUDE -70
@@ -52,7 +53,14 @@ int main(int argc, char* argv[]) {
     exit(return_code);
   }
 
+  int success = 0;
+  if ((result->id != 1) || (round(result->distance) != 4889)) {
+    success = 1;
+  }
+
   printf("Found nearest geofence: {id=%d distance=%f}\n", result->id, result->distance);
   free(result);
   sqlite3_close(database);
+
+  return success;
 }
