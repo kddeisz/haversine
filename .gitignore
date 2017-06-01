@@ -1,2 +1,8 @@
+java/haversine.o
+java/libhaversine.jnilib
+java/Haversine.class
+
+src/haversine.o
+
 test/haversine
 test/test.sqlite3
